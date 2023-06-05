@@ -1,55 +1,56 @@
 // import Papa from 'papaparse'
-import Data from 'shared/files/data.json'
-import { useEffect, useState } from 'react'
+import Data from "shared/files/data.json";
+import { useEffect, useState } from "react";
 import {
   Cards,
   Correlation,
   Followers,
+  NftProposal,
   NftReward,
   Performers,
   Proposals,
   VotesNft,
-} from 'application/components'
+} from "application/components";
 
 const App = () => {
-  const [value, setValue] = useState('')
-  const [selectedAccount, setSelectedAccount] = useState<any>([])
+  const [value, setValue] = useState("");
+  const [selectedAccount, setSelectedAccount] = useState<any>([]);
 
   useEffect(() => {
-    if (value === 'all') setSelectedAccount([])
+    if (value === "all") setSelectedAccount([]);
 
     const filteredAccount = newData.filter(
-      (data: { address: string }) => data.address === value,
-    )
+      (data: { address: string }) => data.address === value
+    );
 
-    setSelectedAccount(filteredAccount)
-  }, [value])
+    setSelectedAccount(filteredAccount);
+  }, [value]);
 
-  let newData: any = []
+  let newData: any = [];
 
   for (let i in Data) {
-    if (Data[i].ens_name !== 'NULL' && !newData.includes(Data[i])) {
-      newData.push(Data[i])
+    if (Data[i].ens_name !== "NULL" && !newData.includes(Data[i])) {
+      newData.push(Data[i]);
     }
   }
 
   const initialData: any = newData.sort(
     (a: { total_votes: number }, b: { total_votes: number }) =>
-      b.total_votes - a.total_votes,
-  )
+      b.total_votes - a.total_votes
+  );
 
-  const refinedData = selectedAccount.length > 0 ? selectedAccount : newData
+  const refinedData = selectedAccount.length > 0 ? selectedAccount : newData;
 
   let dataCount =
     selectedAccount.length > 0 && value
       ? selectedAccount
-      : initialData.slice(0, 10)
+      : initialData.slice(0, 10);
 
-  const scatterGraphData = selectedAccount.length > 0 ? selectedAccount : Data
+  const scatterGraphData = selectedAccount.length > 0 ? selectedAccount : Data;
 
   const handleSelect = (e: { target: { value: string } }) => {
-    setValue(e.target.value)
-  }
+    setValue(e.target.value);
+  };
 
   return (
     <section className="flex items-start gap-[2rem] px-[1rem] lg:px-[4rem] py-[4rem]">
@@ -76,6 +77,9 @@ const App = () => {
 
             <Correlation data={scatterGraphData} />
           </div>
+          <div className="flex items-center gap-[2rem] mb-[4rem]">
+            <NftProposal data={dataCount} />
+          </div>
         </section>
       </main>
 
@@ -99,12 +103,12 @@ const App = () => {
               >
                 {item.ens_name}
               </option>
-            ),
+            )
           )}
         </select>
       </aside>
     </section>
-  )
-}
+  );
+};
 
-export default App
+export default App;

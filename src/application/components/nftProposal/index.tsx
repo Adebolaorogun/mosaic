@@ -12,19 +12,25 @@ import {
 } from "recharts";
 
 type DataObj = {
-  total_votes: number;
+  total_proposal_interaction: number;
 };
 
-export const VotesNft = ({ data }: any) => {
+export const NftProposal = ({ data }: any) => {
   const newData = data.sort(
-    (a: { total_votes: number }, b: { total_votes: number }) =>
-      b.total_votes - a.total_votes
+    (
+      a: { total_proposal_interaction: number },
+      b: { total_proposal_interaction: number }
+    ) => b.total_proposal_interaction - a.total_proposal_interaction
   );
 
   const mainData = newData.map((obj: DataObj) => ({
     ...obj,
-    total_votes: Math.log(Number(obj.total_votes)),
+    total_proposal_interaction: Math.log(
+      Number(obj.total_proposal_interaction)
+    ),
   }));
+
+  console.log(mainData);
 
   // const dataLog = newData.map((name: any, index: string | number) => {
   //   name.total_votes = Math.log(name.total_votes)
@@ -37,7 +43,7 @@ export const VotesNft = ({ data }: any) => {
   return (
     <div className="w-fit shadow-lg rounded-[.5rem] py-[.5rem] px-[1.5rem]">
       <h3 className="text-center text-sm mb-[.8rem] font-[500]">
-        Total votes and total NFT by ENS name
+        Total votes and total proposal by ENS name
       </h3>
 
       <ComposedChart
@@ -76,9 +82,9 @@ export const VotesNft = ({ data }: any) => {
           fill="blue"
         />
         <Line
-          name="Total votes"
+          name="Total Proposal"
           type="monotone"
-          dataKey="total_votes"
+          dataKey="total_proposal_interaction"
           stroke="red"
         />
 
