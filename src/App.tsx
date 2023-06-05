@@ -53,8 +53,8 @@ const App = () => {
   };
 
   return (
-    <section className="flex items-start gap-[2rem] px-[1rem] lg:px-[4rem] py-[4rem]">
-      <main className="w-[80%]">
+    <section className=" h-screen pt-6 flex items-start gap-[2rem]  lg:px-[4rem] ">
+      <main className="w-[80%] h-full ">
         <Cards
           value={value}
           initialData={initialData}
@@ -62,7 +62,7 @@ const App = () => {
         />
 
         <section>
-          <div className="flex items-center gap-[2rem] mb-[4rem]">
+          <div className="grid grid-cols-2 md:grid-cols-3  gap-2 mb-6">
             <NftReward data={refinedData} />
 
             <Proposals data={dataCount} />
@@ -70,23 +70,18 @@ const App = () => {
             <Performers data={dataCount} />
           </div>
 
-          <div className="flex items-center gap-[2rem] mb-[4rem]">
+          <div className="grid grid-cols-2 md:grid-cols-3  gap-2">
             <VotesNft data={dataCount} />
 
             <Followers data={dataCount} />
 
             <Correlation data={scatterGraphData} />
           </div>
-          <div className="flex items-center gap-[2rem] mb-[4rem]">
-            <NftProposal data={dataCount} />
-          </div>
         </section>
       </main>
 
       <aside className="w-[18%]">
-        <h1 className="text-xl text-[blue] font-[700] mb-[4rem]">
-          Optimism PoC
-        </h1>
+        <h1 className="text-xl text-[blue] font-[700] mb-2">Optimism PoC</h1>
 
         <select
           value={value}
@@ -106,6 +101,10 @@ const App = () => {
             )
           )}
         </select>
+
+        <div className="flex items-center gap-[2rem] mt-[4rem]">
+          <NftProposal data={dataCount} />
+        </div>
       </aside>
     </section>
   );
