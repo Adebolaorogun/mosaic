@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
   Line,
+  ResponsiveContainer,
 } from "recharts";
 
 type DataObj = {
@@ -41,60 +42,59 @@ export const NftProposal = ({ data }: any) => {
   // console.log(dataLog)
 
   return (
-    <div className="w-fit shadow-lg rounded-[.5rem] py-[.5rem] px-[1.5rem]">
+    <div className=" shadow-lg rounded-[.5rem] py-[.5rem] px-[1.5rem]">
       <h3 className="text-center text-sm mb-[.8rem] font-[500]">
-        Total votes and total proposal by ENS name
+        Total nft and total proposal by ENS name
       </h3>
+      <ResponsiveContainer width="100%" height="80%">
+        <ComposedChart
+          data={mainData}
+          margin={{
+            right: 7,
+            left: -12,
+          }}
+        >
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
+          <XAxis
+            dataKey="ens_name"
+            height={90}
+            style={{ overflow: "visible", height: "auto" }}
+            interval={0}
+            angle={-90}
+            tick={{ fontSize: "8px" }}
+            orientation="bottom"
+            dy={30}
+            padding="gap"
+            tickMargin={18}
+          />
+          <YAxis
+            tick={{ fontSize: "12px" }}
+            // domain={[0, (dataMax: number) => Math.log(dataMax)]}
+          />
+          <Tooltip />
+          <Legend />
+          <Bar
+            dataKey="total_nft"
+            name="Total NFT"
+            type="monotone"
+            barSize={20}
+            fill="blue"
+          />
+          <Line
+            name="Total Proposal"
+            type="monotone"
+            dataKey="total_proposal_interaction"
+            stroke="red"
+          />
 
-      <ComposedChart
-        height={150}
-        width={250}
-        data={mainData}
-        margin={{
-          right: 7,
-          left: -12,
-        }}
-      >
-        {/* <CartesianGrid strokeDasharray="3 3" /> */}
-        <XAxis
-          dataKey="ens_name"
-          height={90}
-          style={{ overflow: "visible", height: "auto" }}
-          interval={0}
-          angle={-90}
-          tick={{ fontSize: "8px" }}
-          orientation="bottom"
-          dy={30}
-          padding="gap"
-          tickMargin={18}
-        />
-        <YAxis
-          tick={{ fontSize: "12px" }}
-          // domain={[0, (dataMax: number) => Math.log(dataMax)]}
-        />
-        <Tooltip />
-        <Legend />
-        <Bar
-          dataKey="total_nft"
-          name="Total NFT"
-          type="monotone"
-          barSize={20}
-          fill="blue"
-        />
-        <Line
-          name="Total Proposal"
-          type="monotone"
-          dataKey="total_proposal_interaction"
-          stroke="red"
-        />
-
-        {/* <Line
+          {/* <Line
           name="Total NFT"
           type="monotone"
           dataKey="total_nft"
           stroke="red"
         /> */}
-      </ComposedChart>
+        </ComposedChart>
+      </ResponsiveContainer>
     </div>
   );
 };

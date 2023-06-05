@@ -1,37 +1,40 @@
-import { Card } from './card'
+import { Followers } from "../followers";
+import { Proposals } from "../proposals";
+import { Card } from "./card";
 import {
   faUser,
   faCoins,
   faEnvelope,
   faSquarePollVertical,
-} from '@fortawesome/free-solid-svg-icons'
+} from "@fortawesome/free-solid-svg-icons";
 
 export const Cards = ({ value, selectedAccount, initialData }: any) => {
-  const refinedData = selectedAccount.length > 0 ? selectedAccount : initialData
+  const refinedData =
+    selectedAccount.length > 0 ? selectedAccount : initialData;
 
   const data =
     selectedAccount.length > 0 && value
       ? selectedAccount
-      : initialData.slice(0, 10)
+      : initialData.slice(0, 10);
 
   const totalNft = refinedData.reduce(
     (acc: any, value: { total_nft: any }) => acc + value.total_nft,
-    0,
-  )
+    0
+  );
 
   const totalProposal = refinedData.reduce(
     (acc: any, value: { total_proposal_interaction: any }) =>
       acc + value.total_proposal_interaction,
-    0,
-  )
+    0
+  );
 
   const totalVotes = refinedData.reduce(
     (acc: any, value: { total_votes: any }) => acc + value.total_votes,
-    0,
-  )
+    0
+  );
 
   return (
-    <section className="w-full flex flex-wrap items-center gap-[1rem] lg:gap-[2rem] mb-[4rem]">
+    <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-[1rem] lg:gap-[2rem] mb-[4rem]">
       <Card
         data={data}
         icon={faUser}
@@ -68,5 +71,5 @@ export const Cards = ({ value, selectedAccount, initialData }: any) => {
         value={totalVotes.toLocaleString()}
       />
     </section>
-  )
-}
+  );
+};

@@ -1,9 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { AreaChart, XAxis, YAxis, Tooltip, Area } from 'recharts'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  AreaChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Area,
+  ResponsiveContainer,
+} from "recharts";
 
 export const Card = ({ icon, title, data, dataKey, value }: any) => {
   return (
-    <div className="w-[45%] lg:w-auto pt-[1rem] px-[1rem] shadow-md rounded-[.5rem]">
+    <div className=" lg:w-auto pt-[1rem] px-[1rem] shadow-md rounded-[.5rem]">
       <header className="flex max-md:flex-col items-center gap-[.6rem] mb-[1.5rem]">
         <div>
           <FontAwesomeIcon
@@ -20,24 +27,16 @@ export const Card = ({ icon, title, data, dataKey, value }: any) => {
         </article>
       </header>
 
-      <div className="max-md:hidden">
-        <AreaChart
-          width={200}
-          height={55}
-          data={data}
-          margin={{ left: -60, bottom: -10, top: 8 }}
-        >
-          <XAxis dataKey="ens_name" tick={false} />
-          <YAxis tick={false} />
-          <Tooltip />
-          <Area
-            type="monotone"
-            dataKey={dataKey}
-            stroke="red"
-            fill="blue"
-          />
-        </AreaChart>
+      <div className="max-md:hidden h-[100px] min-w-[200px]">
+        <ResponsiveContainer width="100%" height="80%">
+          <AreaChart data={data} margin={{ left: -60, bottom: -10, top: 8 }}>
+            <XAxis dataKey="ens_name" tick={false} />
+            <YAxis tick={false} />
+            <Tooltip />
+            <Area type="monotone" dataKey={dataKey} stroke="red" fill="blue" />
+          </AreaChart>
+        </ResponsiveContainer>
       </div>
     </div>
-  )
-}
+  );
+};
