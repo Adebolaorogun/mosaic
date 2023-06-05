@@ -25,7 +25,7 @@ export const Followers = ({ data }: any) => {
   ];
 
   return (
-    <div className="shadow-md py-[.3rem] flex flex-col items-center rounded-[.5rem]">
+    <div className="min-h-[300px] shadow-md py-[.3rem] flex flex-col items-center rounded-[.5rem]">
       <h3 className="text-center text-sm mb-[.8rem] font-[500]">
         Total Followers{" "}
         <span className="text-xs font-[400]">({total.toLocaleString()})</span>

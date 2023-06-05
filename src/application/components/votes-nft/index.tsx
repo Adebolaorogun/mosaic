@@ -36,7 +36,7 @@ export const VotesNft = ({ data }: any) => {
   // console.log(dataLog)
 
   return (
-    <div className=" shadow-lg rounded-[.5rem] py-[.5rem] ">
+    <div className="min-h-[300px] shadow-lg rounded-[.5rem] py-[.5rem] ">
       <h3 className="text-center text-sm mb-[.8rem] font-[500]">
         Total votes and total NFT by ENS name
       </h3>

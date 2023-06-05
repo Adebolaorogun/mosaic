@@ -42,7 +42,7 @@ export const NftProposal = ({ data }: any) => {
   // console.log(dataLog)
 
   return (
-    <div className=" shadow-lg rounded-[.5rem] py-[.5rem] px-[1.5rem]">
+    <div className="min-h-[300px] shadow-lg rounded-[.5rem] py-[.5rem] px-[1.5rem]">
       <h3 className="text-center text-sm mb-[.8rem] font-[500]">
         Total nft and total proposal by ENS name
       </h3>

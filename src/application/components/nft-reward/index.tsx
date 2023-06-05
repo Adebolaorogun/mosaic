@@ -17,7 +17,7 @@ export const NftReward = ({ data }: any) => {
     .slice(0, 10);
 
   return (
-    <div className="h-[400px] mb-10  shadow-lg rounded-[.5rem] py-[.3rem] ">
+    <div className="h-[300px] mb-10  shadow-lg rounded-[.5rem] py-[.3rem] ">
       <h3 className="text-center text-sm mb-[.8rem] font-[500]">
         Total no NFT and Rewards
       </h3>

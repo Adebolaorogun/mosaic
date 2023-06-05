@@ -15,7 +15,7 @@ export const Performers = ({ data }: any) => {
   );
 
   return (
-    <div className=" shadow-lg rounded-[.5rem] py-[.3rem] ">
+    <div className="min-h-[300px] shadow-lg rounded-[.5rem] py-[.3rem] ">
       <h3 className="text-center text-sm mb-[.8rem] font-[500]">
         Top performers by total votes
       </h3>
